@@ -1,6 +1,83 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>ooga booga</h1>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bouncing Image</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #111;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .container {
+      position: absolute;
+      text-align: center;
+    }
+
+    img {
+      width: 220px;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    .caption {
+      margin-top: 12px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="box">
+    <!-- Replace myimage.jpg with your file name -->
+    <img src="asd.png" alt="My Image">
+
+    <div class="caption">
+      Hello from GitHub Pages 🚀
+    </div>
+  </div>
+
+  <script>
+    const box = document.getElementById("box");
+
+    let x = 100;
+    let y = 100;
+
+    let dx = 4;
+    let dy = 4;
+
+    function animate() {
+      const boxWidth = box.offsetWidth;
+      const boxHeight = box.offsetHeight;
+
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      x += dx;
+      y += dy;
+
+      if (x + boxWidth >= screenWidth || x <= 0) {
+        dx *= -1;
+      }
+
+      if (y + boxHeight >= screenHeight || y <= 0) {
+        dy *= -1;
+      }
+
+      box.style.left = x + "px";
+      box.style.top = y + "px";
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+
+</body>
 </html>
